@@ -14,7 +14,7 @@ public class ChallengeSpawner : MonoBehaviour
     {
         // spawn a bunch of random challenges
         // from unity tutorial
-        InvokeRepeating("SpawnChallenge", 2, 2);
+        InvokeRepeating("SpawnChallenge", 1, 1);
     }
 
     // Update is called once per frame

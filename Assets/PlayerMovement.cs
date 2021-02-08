@@ -55,18 +55,6 @@ public class PlayerMovement : MonoBehaviour
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
 
-        // time STOP
-        if (x != 0 || z != 0)
-        {
-            Time.timeScale = 1; 
-        }
-        else
-        {
-            //Time.timeScale = 0;
-            Time.timeScale = 0.01f;
-            Time.fixedDeltaTime = 0.02f * Time.timeScale;
-        }
-
         // this makes movement speed up so should be used for like a powerup or something
         if (Input.GetButtonDown("Fire2"))
         {
@@ -80,22 +68,33 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Physics.gravity = worldGravity;
-        // worldGravity.y = velocity.y;
+        // time STOP
+        if (x != 0 || z != 0)
+        {
+            Time.timeScale = 1;
+        }
+        else
+        {
+            //Time.timeScale = 0;
+            Time.timeScale = 0.01f;
+            Time.fixedDeltaTime = 0.5f * Time.timeScale;
+        }
 
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            worldGravity.x = -9.8f;
-            velocity.x += gravity * Time.fixedDeltaTime;
-            Debug.Log(worldGravity);
-        }
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            worldGravity.x = 9.8f;
-            velocity.x += gravity * Time.fixedDeltaTime;
-            Debug.Log(worldGravity);
-        }
-        
+        //Physics.gravity = worldGravity;
+        //// worldGravity.y = velocity.y;
+
+        //if (Input.GetKeyDown(KeyCode.E))
+        //{
+        //    worldGravity.x = -9.8f;
+        //    velocity.x += gravity * Time.fixedDeltaTime;
+        //    Debug.Log(worldGravity);
+        //}
+        //if (Input.GetKeyDown(KeyCode.Q))
+        //{
+        //    worldGravity.x = 9.8f;
+        //    velocity.x += gravity * Time.fixedDeltaTime;
+        //    Debug.Log(worldGravity);
+        //}
     }
 
     private void OnTriggerEnter(Collider collision)

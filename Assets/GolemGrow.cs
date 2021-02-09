@@ -12,7 +12,8 @@ public class GolemGrow : MonoBehaviour
         x = Input.GetAxisRaw("Horizontal");
         z = Input.GetAxisRaw("Vertical");
 
-        if (x == 0 || z == 0)
+        // if player is not moving
+        if (x == 0 && z == 0)
         {
             gameObject.transform.localScale += new Vector3(5, 5, 5) * Time.fixedDeltaTime;
         }

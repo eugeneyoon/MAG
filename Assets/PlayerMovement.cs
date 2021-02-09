@@ -72,14 +72,16 @@ public class PlayerMovement : MonoBehaviour
         if (x != 0 || z != 0)
         {
             Time.timeScale = 1;
+            Time.fixedDeltaTime = 0.02f * Time.timeScale;
         }
         else
         {
             //Time.timeScale = 0;
             Time.timeScale = 0.01f;
-            Time.fixedDeltaTime = 0.5f * Time.timeScale;
+            Time.fixedDeltaTime = 0.02f * Time.timeScale;
         }
 
+        // changing gravity. use in a different game i think 
         //Physics.gravity = worldGravity;
         //// worldGravity.y = velocity.y;
 

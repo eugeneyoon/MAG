@@ -17,12 +17,17 @@ public class PlayerMovement : MonoBehaviour
 
     public Vector3 velocity;
     bool isGrounded;
+    bool canDash = true;
+
+    public AudioClip dashSound;
+    private AudioSource dash;
 
     Vector3 worldGravity;
 
     void Start()
     {
         worldGravity = Physics.gravity;
+        dash = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -56,14 +61,35 @@ public class PlayerMovement : MonoBehaviour
         controller.Move(velocity * Time.deltaTime);
 
         // this makes movement speed up so should be used for like a powerup or something
-        if (Input.GetButtonDown("Fire2"))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             speed *= 5; 
         }
-        else if (Input.GetButtonUp("Fire2"))
+        else if (Input.GetKeyUp(KeyCode.E))
         {
             speed /= 5; 
         }
+
+        // dash
+        if (Input.GetButtonDown("Fire2"))
+        {
+            if (canDash)
+            {
+                StartCoroutine(Dash());
+                dash.PlayOneShot(dashSound, 1.0f);
+            }
+        }
+    }
+
+    private IEnumerator Dash()
+    {
+        Vector3 move = (transform.right * x + transform.forward * z).normalized;
+        controller.Move(move * 1000f * Time.deltaTime);
+        canDash = false;
+        Debug.Log("before");
+        yield return new WaitForSecondsRealtime(3);
+        canDash = true;
+        Debug.Log("after");
     }
 
     private void FixedUpdate()

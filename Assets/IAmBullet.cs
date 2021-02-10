@@ -5,12 +5,11 @@ using UnityEngine;
 public class IAmBullet : MonoBehaviour
 {
     public Rigidbody rb;
-    public float pow;
     public Transform playerPos; 
 
     void Awake()
     {
-        rb.AddForce(Vector3.forward * pow, ForceMode.Force);
+        rb.AddForce(Vector3.forward * 10000f * Time.fixedDeltaTime, ForceMode.Force);
     }
 
     // Update is called once per frame

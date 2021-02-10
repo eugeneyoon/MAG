@@ -18,7 +18,7 @@ public class ProjectionSpawner : MonoBehaviour
     void Update()
     {
         // shoot projection  
-        if (Input.GetButton("Fire1"))
+        if (Input.GetButtonDown("Fire1"))
         {
             playerPos = GameObject.FindGameObjectWithTag("Player").transform;
             mouseLookPos = GameObject.FindGameObjectWithTag("MainCamera").transform;

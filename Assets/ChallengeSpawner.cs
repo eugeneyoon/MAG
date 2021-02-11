@@ -8,19 +8,36 @@ public class ChallengeSpawner : MonoBehaviour
     public float spawnBoundX;
     public float spawnBoundY;
     public float spawnBoundZ;
+    public float difficultyRiser;
 
     // Start is called before the first frame update
     void Start()
     {
         // spawn a bunch of random challenges
         // from unity tutorial
-        InvokeRepeating("SpawnChallenge", 1, 1);
+        //InvokeRepeating("SpawnChallenge", 1, repeat);
+        StartCoroutine(Harder());
     }
 
     // Update is called once per frame
     void Update()
     {
-        // spawn some depending on how far up the player is or something 
+        Debug.Log(difficultyRiser);
+    }
+
+    private IEnumerator Harder()
+    {
+        while (difficultyRiser > 0.1f)
+        {
+            SpawnChallenge();
+            difficultyRiser *= 0.9f;
+            yield return new WaitForSeconds(difficultyRiser);
+        }
+        while (difficultyRiser > 0)
+        {
+            SpawnChallenge();
+            yield return new WaitForSeconds(difficultyRiser);
+        }
     }
 
     void SpawnChallenge()

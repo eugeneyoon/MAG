@@ -18,6 +18,8 @@ public class PlayerMovement : MonoBehaviour
     public Vector3 velocity;
     bool isGrounded;
     bool canDash = true;
+    public float dashDuration;
+    public float dashForce;
 
     public AudioClip dashSound;
     private AudioSource dash;
@@ -83,11 +85,17 @@ public class PlayerMovement : MonoBehaviour
 
     private IEnumerator Dash()
     {
-        Vector3 move = (transform.right * x + transform.forward * z).normalized;
-        controller.Move(move * 1000f * Time.deltaTime);
+        float timeLeft = dashDuration;
         canDash = false;
         Debug.Log("before");
-        yield return new WaitForSecondsRealtime(3);
+        while (timeLeft > 0)
+        {
+            Vector3 move = (transform.right * x + transform.forward * z).normalized;
+            controller.Move(move * dashForce * Time.deltaTime);
+            timeLeft -= Time.deltaTime;
+            yield return new WaitForSeconds(Time.deltaTime);
+        }
+        yield return new WaitForSecondsRealtime(1);
         canDash = true;
         Debug.Log("after");
     }

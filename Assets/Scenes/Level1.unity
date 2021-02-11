@@ -297,6 +297,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   velocity: {x: 0, y: 0, z: 0}
+  dashDuration: 0.1
+  dashForce: 500
   dashSound: {fileID: 8300000, guid: 068180fc5652e384e94f5d5412243f20, type: 3}
 --- !u!82 &217149249
 AudioSource:

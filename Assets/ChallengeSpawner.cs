@@ -22,7 +22,7 @@ public class ChallengeSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(difficultyRiser);
+        //Debug.Log(difficultyRiser);
     }
 
     private IEnumerator Harder()

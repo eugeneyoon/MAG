@@ -28,7 +28,7 @@ public class ProjectionSpawner : MonoBehaviour
 
     void spawnProjection()
     {
-        Instantiate(projection, playerPos);
+        Instantiate(projection, mouseLookPos);
         //Debug.Log(playerPos.localEulerAngles.y);
         Debug.Log(playerPos);
     }

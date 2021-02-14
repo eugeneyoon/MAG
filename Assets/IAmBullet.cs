@@ -9,7 +9,8 @@ public class IAmBullet : MonoBehaviour
 
     void Awake()
     {
-        rb.AddForce(Vector3.forward * 10000f * Time.fixedDeltaTime, ForceMode.Force);
+        // this vector has to be forward relative to when it spawns. but it just goes forward globally 
+        rb.AddForce(Vector3.forward * 1000000f * Time.fixedDeltaTime, ForceMode.Impulse);
     }
 
     // Update is called once per frame

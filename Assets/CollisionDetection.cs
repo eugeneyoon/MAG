@@ -7,9 +7,12 @@ public class CollisionDetection : MonoBehaviour
     public float gravity;
     Vector3 velocity;
     private Transform target;
+    public float golemMoveSpeed;
+    private Rigidbody rb;
 
     void Start()
     {
+        rb = GetComponent<Rigidbody>();
         target = GameObject.Find("Player").transform;
     }
 
@@ -22,13 +25,14 @@ public class CollisionDetection : MonoBehaviour
         float z = Input.GetAxisRaw("Vertical");
 
         // following 
-        Vector3 pos = target.position;
         if (x != 0 || z != 0)
         {
-            transform.position = Vector3.MoveTowards(transform.position, pos, 10 * Time.deltaTime);
+            // transform.position = Vector3.MoveTowards(transform.position, target.position, golemMoveSpeed * Time.deltaTime);
+            //rb.AddForce((target.position - transform.position) * golemMoveSpeed, ForceMode.Impulse);
         }
         else
         {
+            // why did i name this gravity? wat is this lol 
             gravity = 0;
         }
 
@@ -46,11 +50,10 @@ public class CollisionDetection : MonoBehaviour
         // and i think i need rigidbodies so that i can store vectors and use then when i unfreeze time. 
     }
 
-    private void OnTriggerEnter(Collider collision)
+    private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            gameObject.SetActive(false);
             Debug.Break();
         }
     }

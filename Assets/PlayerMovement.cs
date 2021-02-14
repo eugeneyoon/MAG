@@ -81,6 +81,19 @@ public class PlayerMovement : MonoBehaviour
                 dash.PlayOneShot(dashSound, 1.0f);
             }
         }
+
+        // time manipulation. 
+        // if i'm moving, time is moving. 
+        if (x != 0 || z != 0)
+        {
+            Time.timeScale = 1;
+            //Time.fixedDeltaTime = 0.02f * Time.timeScale;
+        }
+        else
+        {
+            Time.timeScale = 0.01f;
+            //Time.fixedDeltaTime = 0.02f * Time.timeScale;
+        }
     }
 
     private IEnumerator Dash()
@@ -102,18 +115,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        // time STOP
-        if (x != 0 || z != 0)
-        {
-            Time.timeScale = 1;
-            Time.fixedDeltaTime = 0.02f * Time.timeScale;
-        }
-        else
-        {
-            //Time.timeScale = 0;
-            Time.timeScale = 0.01f;
-            Time.fixedDeltaTime = 0.02f * Time.timeScale;
-        }
+
 
         // changing gravity. use in a different game i think 
         //Physics.gravity = worldGravity;

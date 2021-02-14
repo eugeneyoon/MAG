@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Ground
   - SpeedBoost
+  - Obstacle
+  - Golem
   layers:
   - Default
   - TransparentFX

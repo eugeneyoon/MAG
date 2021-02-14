@@ -124,3 +124,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 5520912965702243125}
+  golem: {fileID: 1022573110168849533, guid: 0c0ecd86c2ad4924f879dfb97d3a8357, type: 3}

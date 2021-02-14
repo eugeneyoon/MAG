@@ -7,7 +7,6 @@ public class ObstacleBehavior : MonoBehaviour
     public Rigidbody rb;
     private Vector3 spawnDirection;
     private Vector3 obstacleDirection;
-    public GameObject golem; 
 
     // Start is called before the first frame update
     void Start()
@@ -43,17 +42,6 @@ public class ObstacleBehavior : MonoBehaviour
             {
                 Debug.Break();
             }
-        }
-
-        if (collision.gameObject.CompareTag("Golem"))
-        {
-            Debug.Log("obstacle has collided with golem");
-            // fly away 
-            // rb.AddForce(- obstacleDirection * 20000f, ForceMode.Impulse);
-
-            // grow / eat
-            Destroy(gameObject);
-            golem.transform.localScale += new Vector3(rb.mass, rb.mass, rb.mass);
         }
     }
 }

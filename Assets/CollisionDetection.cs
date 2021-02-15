@@ -7,6 +7,7 @@ public class CollisionDetection : MonoBehaviour
     Vector3 velocity;
     private Transform target;
     public float golemMoveSpeed;
+    public float golemEatSpeed;
     private Rigidbody rb;
 
     void Start()
@@ -33,9 +34,9 @@ public class CollisionDetection : MonoBehaviour
         {
             Debug.Break();
         }
-        if (collision.gameObject.CompareTag("Obstacle"))
+        if (collision.gameObject.CompareTag("Obstacle") || collision.gameObject.CompareTag("Rest"))
         {
-            gameObject.transform.localScale += new Vector3(10, 10, 10);
+            gameObject.transform.localScale += new Vector3(golemEatSpeed, golemEatSpeed, golemEatSpeed);
             Destroy(collision.collider.gameObject);
         }
     }

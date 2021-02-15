@@ -1462,6 +1462,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1883457663}
   - component: {fileID: 1883457662}
+  - component: {fileID: 1883457661}
   m_Layer: 0
   m_Name: RearViewMirror
   m_TagString: Untagged
@@ -1469,6 +1470,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
+--- !u!114 &1883457661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1883457660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd91cc40bdf06bb42a2169e17300e743, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!20 &1883457662
 Camera:
   m_ObjectHideFlags: 0
@@ -1703,7 +1716,12 @@ PrefabInstance:
     - target: {fileID: 1022573110168849530, guid: 0c0ecd86c2ad4924f879dfb97d3a8357,
         type: 3}
       propertyPath: golemMoveSpeed
-      value: 0.01
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 1022573110168849530, guid: 0c0ecd86c2ad4924f879dfb97d3a8357,
+        type: 3}
+      propertyPath: golemEatSpeed
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1022573110168849533, guid: 0c0ecd86c2ad4924f879dfb97d3a8357,
         type: 3}

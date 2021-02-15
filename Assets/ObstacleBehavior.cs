@@ -33,15 +33,12 @@ public class ObstacleBehavior : MonoBehaviour
         {
             rb.velocity = new Vector3(0, 0, 0);
             gameObject.layer = 8;
-            gameObject.tag = "Ground";
+            gameObject.tag = "Rest";
             rb.mass *= 10000;
         }
-        else
+        else if (gameObject.tag == "Obstacle" && collision.gameObject.CompareTag("Player"))
         {
-            if (collision.gameObject.CompareTag("Player"))
-            {
-                Debug.Break();
-            }
+            Debug.Break();
         }
     }
 }

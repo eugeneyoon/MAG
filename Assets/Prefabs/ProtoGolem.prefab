@@ -108,7 +108,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dc60b55af859b5499c9023dbefb05f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  golemMoveSpeed: 0.05
+  golemMoveSpeed: 0.02
+  golemEatSpeed: 2
 --- !u!114 &1022573110168849531
 MonoBehaviour:
   m_ObjectHideFlags: 0

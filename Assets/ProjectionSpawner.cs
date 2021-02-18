@@ -20,7 +20,7 @@ public class ProjectionSpawner : MonoBehaviour
         // shoot projection  
         if (Input.GetButtonDown("Fire1"))
         {
-            playerPos = GameObject.FindGameObjectWithTag("Player").transform;
+            //playerPos = GameObject.FindGameObjectWithTag("Player").transform;
             mouseLookPos = GameObject.FindGameObjectWithTag("MainCamera").transform;
             spawnProjection();
         }
@@ -28,8 +28,8 @@ public class ProjectionSpawner : MonoBehaviour
 
     void spawnProjection()
     {
-        Instantiate(projection, mouseLookPos);
+        Instantiate(projection, mouseLookPos, true);
         //Debug.Log(playerPos.localEulerAngles.y);
-        Debug.Log(playerPos);
+        //Debug.Log(playerPos);
     }
 }

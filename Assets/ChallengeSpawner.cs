@@ -27,10 +27,10 @@ public class ChallengeSpawner : MonoBehaviour
 
     private IEnumerator Harder()
     {
-        while (difficultyRiser > 0.3f)
+        while (difficultyRiser > 0.4f)
         {
             SpawnChallenge();
-            difficultyRiser *= 0.9f;
+            difficultyRiser *= 0.8f;
             yield return new WaitForSeconds(difficultyRiser);
         }
         while (difficultyRiser > 0)

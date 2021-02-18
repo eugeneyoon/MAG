@@ -1450,7 +1450,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projection: {fileID: 8797919033716253197, guid: 4493eda3ca83da7478abc6ea4fe2474f,
     type: 3}
-  playerPos: {fileID: 217149247}
+  playerPos: {fileID: 0}
   mouseLookPos: {fileID: 0}
 --- !u!1 &1883457660
 GameObject:
@@ -1712,16 +1712,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1022573110168849530, guid: 0c0ecd86c2ad4924f879dfb97d3a8357,
-        type: 3}
-      propertyPath: golemMoveSpeed
-      value: 0.02
-      objectReference: {fileID: 0}
-    - target: {fileID: 1022573110168849530, guid: 0c0ecd86c2ad4924f879dfb97d3a8357,
-        type: 3}
-      propertyPath: golemEatSpeed
-      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1022573110168849533, guid: 0c0ecd86c2ad4924f879dfb97d3a8357,
         type: 3}

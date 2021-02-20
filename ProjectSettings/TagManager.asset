@@ -9,6 +9,8 @@ TagManager:
   - Obstacle
   - Golem
   - Rest
+  - Projection
+  - Shield
   layers:
   - Default
   - TransparentFX

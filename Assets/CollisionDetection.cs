@@ -9,6 +9,7 @@ public class CollisionDetection : MonoBehaviour
     public float golemMoveSpeed;
     public float golemEatSpeed;
     private Rigidbody rb;
+    public bool gameOver = false;
 
     void Start()
     {
@@ -26,13 +27,18 @@ public class CollisionDetection : MonoBehaviour
         {
             rb.AddForce((target.position - transform.position) * golemMoveSpeed, ForceMode.VelocityChange);
         }
+
+        //if (gameOver == true)
+        //{
+        //    Debug.Break();
+        //}
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            Debug.Break();
+            FindObjectOfType<GameManager>().GameOver();
         }
         if (collision.gameObject.CompareTag("Obstacle") || collision.gameObject.CompareTag("Rest"))
         {

@@ -8,7 +8,9 @@ public class ChallengeSpawner : MonoBehaviour
     public float spawnBoundX;
     public float spawnBoundY;
     public float spawnBoundZ;
-    public float difficultyRiser;
+    public float startingRate;
+    public float spawnRateMod; 
+    public float spawnRateLimit;
 
     // Start is called before the first frame update
     void Start()
@@ -27,16 +29,16 @@ public class ChallengeSpawner : MonoBehaviour
 
     private IEnumerator Harder()
     {
-        while (difficultyRiser > 0.4f)
+        while (startingRate > spawnRateLimit)
         {
             SpawnChallenge();
-            difficultyRiser *= 0.8f;
-            yield return new WaitForSeconds(difficultyRiser);
+            startingRate *= spawnRateMod;
+            yield return new WaitForSeconds(startingRate);
         }
-        while (difficultyRiser > 0)
+        while (startingRate > 0)
         {
             SpawnChallenge();
-            yield return new WaitForSeconds(difficultyRiser);
+            yield return new WaitForSeconds(startingRate);
         }
     }
 

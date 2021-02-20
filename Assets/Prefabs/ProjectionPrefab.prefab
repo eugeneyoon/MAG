@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 8797919033716253207}
   m_Layer: 0
   m_Name: ProjectionPrefab
-  m_TagString: Untagged
+  m_TagString: Projection
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -98,6 +98,7 @@ MonoBehaviour:
   playerPos: {fileID: 0}
   projectionForce: 10000
   mouseLookPos: {fileID: 0}
+  golem: {fileID: 0}
 --- !u!54 &8797919033716253206
 Rigidbody:
   m_ObjectHideFlags: 0

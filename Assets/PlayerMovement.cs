@@ -17,9 +17,14 @@ public class PlayerMovement : MonoBehaviour
 
     public Vector3 velocity;
     bool isGrounded;
+
     bool canDash = true;
     public float dashDuration;
     public float dashForce;
+
+    public bool shielding = false;
+    public GameObject shield;
+    public float shieldDurability;
 
     public AudioClip dashSound;
     private AudioSource dash;
@@ -94,6 +99,23 @@ public class PlayerMovement : MonoBehaviour
             Time.timeScale = 0.01f;
             //Time.fixedDeltaTime = 0.02f * Time.timeScale;
         }
+
+        // shield
+        if (Input.GetButton("Fire1"))
+        {
+            if (shieldDurability > 0)
+            {
+                Shielding();
+            }
+            else
+            {
+                NotShielding();
+            }
+        }
+        if (Input.GetButtonUp("Fire1"))
+        {
+            NotShielding();
+        }
     }
 
     private IEnumerator Dash()
@@ -113,10 +135,31 @@ public class PlayerMovement : MonoBehaviour
         Debug.Log("after");
     }
 
+
+    // why did i put this in PlayerMovement instead of its own thing? 
+    void Shielding()
+    {
+        // make the player invincible
+        shielding = true;
+
+        // make the shield visually
+        shield.SetActive(true);
+
+        // start counting down
+        shieldDurability -= 10 * Time.deltaTime;
+        
+        // somewhere else, make it so that the countdown goes down more every time you get hit
+        // maybe there's a way to get more of this too via pickup
+    }
+
+    void NotShielding()
+    {
+        shielding = false;
+        shield.SetActive(false);
+    }
+
     private void FixedUpdate()
     {
-
-
         // changing gravity. use in a different game i think 
         //Physics.gravity = worldGravity;
         //// worldGravity.y = velocity.y;
@@ -139,7 +182,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("SpeedBoost"))
         {
-            speed *= 10f;
+            speed *= 10;
         }
     }
 
@@ -147,7 +190,15 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("SpeedBoost"))
         {
-            speed /= 10f;
+            speed /= 10;
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Obstacle"))
+        {
+            shieldDurability -= 10;
         }
     }
 }

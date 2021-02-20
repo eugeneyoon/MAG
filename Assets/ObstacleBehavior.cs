@@ -34,11 +34,30 @@ public class ObstacleBehavior : MonoBehaviour
             rb.velocity = new Vector3(0, 0, 0);
             gameObject.layer = 8;
             gameObject.tag = "Rest";
-            rb.mass *= 10000;
+            rb.mass *= 100000;
         }
         else if (gameObject.tag == "Obstacle" && collision.gameObject.CompareTag("Player"))
         {
-            Debug.Break();
+            FindObjectOfType<GameManager>().GameOver();
+        }
+        // if obstacle or still obstacle hits shield 
+        if (gameObject.tag == "Obstacle" && collision.collider.CompareTag("Shield") || gameObject.tag == "Rest" && collision.collider.CompareTag("Shield"))
+        {
+            GameObject golem = FindObjectOfType<CollisionDetection>().gameObject;
+            CollisionDetection golemDetection = FindObjectOfType<CollisionDetection>();
+            golem.transform.localScale -= new Vector3(golemDetection.golemEatSpeed / 2, golemDetection.golemEatSpeed / 2, golemDetection.golemEatSpeed / 2);
+
+            // can't get smaller than 1 
+            if (golem.transform.localScale.x < 1)
+            {
+                golem.transform.localScale = new Vector3(1, 1, 1);
+            }
+
+            Destroy(gameObject);
+
+            //// this feels like stupid code
+            //GameObject player = FindObjectOfType<PlayerMovement>().gameObject;
+            //rb.AddForce((transform.position - player.transform.position) * 10000, ForceMode.Impulse);
         }
     }
 }

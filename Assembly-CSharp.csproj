@@ -65,13 +65,13 @@
     <Compile Include="Assets\ChallengeSpawner.cs" />
     <Compile Include="Assets\CollisionDetection.cs" />
     <Compile Include="Assets\EndZone.cs" />
+    <Compile Include="Assets\GameManager.cs" />
     <Compile Include="Assets\GolemGrow.cs" />
-    <Compile Include="Assets\IAmBullet.cs" />
     <Compile Include="Assets\MouseLook.cs" />
     <Compile Include="Assets\ObstacleBehavior.cs" />
     <Compile Include="Assets\PlayerMovement.cs" />
-    <Compile Include="Assets\ProjectionSpawner.cs" />
     <Compile Include="Assets\RearViewFollow.cs" />
+    <Compile Include="Assets\WhatADifferenceADayMakes.cs" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />

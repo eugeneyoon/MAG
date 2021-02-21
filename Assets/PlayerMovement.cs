@@ -23,8 +23,9 @@ public class PlayerMovement : MonoBehaviour
     public float dashForce;
 
     public bool shielding = false;
-    public GameObject shield;
+    public GameObject shield; 
     public float shieldDurability;
+    public GameObject hitShield;
 
     public AudioClip dashSound;
     private AudioSource dash;
@@ -87,19 +88,6 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        // time manipulation. 
-        // if i'm moving, time is moving. 
-        if (x != 0 || z != 0)
-        {
-            Time.timeScale = 1;
-            //Time.fixedDeltaTime = 0.02f * Time.timeScale;
-        }
-        else
-        {
-            Time.timeScale = 0.01f;
-            //Time.fixedDeltaTime = 0.02f * Time.timeScale;
-        }
-
         // shield
         if (Input.GetButton("Fire1"))
         {
@@ -115,6 +103,19 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetButtonUp("Fire1"))
         {
             NotShielding();
+        }
+
+        // time manipulation. 
+        // if i'm moving, time is moving. 
+        if (x != 0 || z != 0)
+        {
+            Time.timeScale = 1;
+            //Time.fixedDeltaTime = 0.02f * Time.timeScale;
+        }
+        else
+        {
+            Time.timeScale = 0.01f;
+            //Time.fixedDeltaTime = 0.02f * Time.timeScale;
         }
     }
 
@@ -135,8 +136,7 @@ public class PlayerMovement : MonoBehaviour
         Debug.Log("after");
     }
 
-
-    // why did i put this in PlayerMovement instead of its own thing? 
+    // needs to be in player movement bc i'm toggling the shield on and off. 
     void Shielding()
     {
         // make the player invincible
@@ -147,7 +147,7 @@ public class PlayerMovement : MonoBehaviour
 
         // start counting down
         shieldDurability -= 10 * Time.deltaTime;
-        
+
         // somewhere else, make it so that the countdown goes down more every time you get hit
         // maybe there's a way to get more of this too via pickup
     }
@@ -191,14 +191,6 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.CompareTag("SpeedBoost"))
         {
             speed /= 10;
-        }
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Obstacle"))
-        {
-            shieldDurability -= 10;
         }
     }
 }

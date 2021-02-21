@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    
     public void GameOver()
     {
         if (FindObjectOfType<PlayerMovement>().shielding == false)

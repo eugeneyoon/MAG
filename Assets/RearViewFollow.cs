@@ -13,6 +13,14 @@ public class RearViewFollow : MonoBehaviour
 
     void Update()
     {
+        //if (gameObject.transform.rotation.y < 140)
+        //{
+        //    gameObject.transform.rotation = new Quaternion(0, 140, 0, 0);
+        //}
+        //if (gameObject.transform.rotation.y >220)
+        //{
+        //    gameObject.transform.rotation = new Quaternion(0, 200, 0, 0);
+        //}
         transform.LookAt(target);
     }
 }

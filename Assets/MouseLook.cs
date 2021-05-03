@@ -6,7 +6,7 @@ public class MouseLook : MonoBehaviour
 {
     public float mouseSensitivity = 500f;
     public Transform playerBody;
-    float xRotation = 0f;
+    float xRotation = 10.421f;
     public GameObject rearView; 
 
     void Start()
@@ -25,13 +25,16 @@ public class MouseLook : MonoBehaviour
 
         // brackeys math to make clamp work. nice. 
         xRotation -= mouseY;
-        xRotation = Mathf.Clamp(xRotation, -90f, 90f);
+        xRotation = Mathf.Clamp(xRotation, 5f, 25f);
         transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
 
         // rearview mirror 
         if (Input.GetButtonDown("Fire3"))
         {
             rearView.SetActive(true);
+            // i can put a clamp here for the sideways rotation. 
+            // actually i think it's much simpler. just manually clamp the mouseX. 
+            Debug.Log(mouseX);
         }
         else if (Input.GetButtonUp("Fire3"))
         {

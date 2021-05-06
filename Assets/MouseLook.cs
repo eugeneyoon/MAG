@@ -7,6 +7,7 @@ public class MouseLook : MonoBehaviour
     public float mouseSensitivity = 500f;
     public Transform playerBody;
     float xRotation = 10.421f;
+    float yPosition = 1.51f;
     public GameObject rearView; 
 
     void Start()
@@ -27,6 +28,11 @@ public class MouseLook : MonoBehaviour
         xRotation -= mouseY;
         xRotation = Mathf.Clamp(xRotation, 5f, 25f);
         transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+
+        // scoop motion? this is not working. 
+        yPosition *= mouseY;
+        yPosition = Mathf.Clamp(yPosition, 10f, 20f);
+        transform.position = Vector3.down * yPosition;
 
         // rearview mirror 
         if (Input.GetButtonDown("Fire3"))

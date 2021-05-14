@@ -8,7 +8,8 @@ public class MouseLook : MonoBehaviour
     public Transform playerBody;
     float xRotation = 10.421f;
     float yPosition = 1.51f;
-    public GameObject rearView; 
+    public GameObject rearView;
+    public GameObject player;
 
     void Start()
     {
@@ -30,9 +31,17 @@ public class MouseLook : MonoBehaviour
         transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
 
         // scoop motion? this is not working. 
-        yPosition *= mouseY;
-        yPosition = Mathf.Clamp(yPosition, 10f, 20f);
-        transform.position = Vector3.down * yPosition;
+        //yPosition *= mouseY;
+        //yPosition = Mathf.Clamp(yPosition, 10f, 20f);
+        //transform.position = Vector3.down * yPosition;
+
+        // now that the camera is separated, i need to make it follow the player. 
+        gameObject.transform.position = new Vector3(player.transform.position.x, player.transform.position.y + 1.51f, player.transform.position.z - 5);
+
+        // and then only follow y axis when not jumping
+
+        // also i should still be able to turn. 
+
 
         // rearview mirror 
         if (Input.GetButtonDown("Fire3"))
